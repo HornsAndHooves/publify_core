@@ -164,6 +164,7 @@ class ArticlesController < ContentController
         @description = this_blog.article_desc_template.to_title(@article, this_blog, params)
 
         @keywords = @article.tags.map(&:name).join(", ")
+        @recent_articles = this_blog.contents.published.limit(3)
         render "articles/#{@article.post_type}"
       end
       format.atom { render_feedback_feed("atom") }

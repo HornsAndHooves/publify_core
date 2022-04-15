@@ -29,7 +29,7 @@ class SetupController < BaseController
       create_first_page @user
     end
 
-    EmailNotify.send_user_create_notification(@user)
+    # EmailNotify.send_user_create_notification(@user)
 
     redirect_to confirm_accounts_url
   end

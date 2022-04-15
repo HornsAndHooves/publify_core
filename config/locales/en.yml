@@ -301,6 +301,7 @@ en:
     resources:
       destroy:
         notice: File has been deleted
+        error: File can't be deleted. There is article which uses it.
       index:
         are_you_sure: Are you sure?
         content_type: Content Type
@@ -665,7 +666,7 @@ en:
       this_comment_has_been_flagged_for_moderator_approval: This comment has been flagged for moderator approval.  It won't appear on this blog until the author approves it
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -679,7 +680,7 @@ en:
     - Nov
     - Dec
     month_names:
-    - 
+    -
     - January
     - February
     - March

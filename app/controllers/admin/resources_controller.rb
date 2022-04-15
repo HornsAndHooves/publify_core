@@ -23,9 +23,14 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def destroy
-    @record = Resource.find(params[:id])
-    @record.destroy
-    flash[:notice] = I18n.t("admin.resources.destroy.notice")
+    if Content.where(resource_id: params[:id]).any?
+      flash[:error] = I18n.t("admin.resources.destroy.error")
+    else
+      @record = Resource.find(params[:id])
+      @record.destroy
+      flash[:notice] = I18n.t("admin.resources.destroy.notice")
+    end
+
     redirect_to admin_resources_url
   end
 end

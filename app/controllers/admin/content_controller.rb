@@ -178,6 +178,7 @@ class Admin::ContentController < Admin::BaseController
              :allow_pings,
              :body,
              :body_and_extended,
+             :resource_id,
              :draft,
              :extended,
              :permalink,

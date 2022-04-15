@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MoveLastConnectionToLastSignInAt < ActiveRecord::Migration[4.2]
+  set_role "content"
+
   class User < ActiveRecord::Base
   end
 

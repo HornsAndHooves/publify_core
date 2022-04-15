@@ -33,7 +33,7 @@ class Blog < ApplicationRecord
   serialize :settings, Hash
 
   # Description
-  setting :blog_name, :string, "My Shiny Weblog!"
+  setting :blog_name, :string, "Integra Credit"
   setting :blog_subtitle, :string, ""
   setting :geourl_location, :string, ""
   setting :canonical_server_url, :string, "" # Deprecated
@@ -49,14 +49,14 @@ class Blog < ApplicationRecord
   # Mostly Behaviour
   setting :text_filter, :string, "markdown smartypants"
   setting :comment_text_filter, :string, "markdown smartypants"
-  setting :limit_article_display, :integer, 10
-  setting :limit_archives_display, :integer, 20
+  setting :limit_article_display, :integer, 9
+  setting :limit_archives_display, :integer, 9
   setting :limit_rss_display, :integer, 10
   setting :default_allow_pings, :boolean, false
-  setting :default_allow_comments, :boolean, true
+  setting :default_allow_comments, :boolean, false
   setting :default_moderate_comments, :boolean, false
   # deprecated but still needed for backward compatibility
-  setting :show_extended_on_rss, :boolean, true
+  setting :show_extended_on_rss, :boolean, false
   setting :hide_extended_on_rss, :boolean, false
   setting :theme, :string, "plain"
   setting :plugin_avatar, :string, ""
@@ -67,8 +67,8 @@ class Blog < ApplicationRecord
   setting :date_format, :string, "%d/%m/%Y"
   setting :time_format, :string, "%Hh%M"
   setting :image_avatar_size, :integer, 48
-  setting :image_thumb_size, :integer, 125
-  setting :image_medium_size, :integer, 600
+  setting :image_thumb_size, :integer, 360
+  setting :image_medium_size, :integer, 805
 
   # SEO
   setting :meta_description, :string, ""
@@ -105,7 +105,7 @@ class Blog < ApplicationRecord
   setting :nofollowify, :boolean, true
   setting :dofollowify, :boolean, false
   setting :use_meta_keyword, :boolean, true
-  setting :home_title_template, :string, "%blog_name% | %blog_subtitle%"
+  setting :home_title_template, :string, "%blog_name%"
   setting :home_desc_template, :string, "%blog_name% | %blog_subtitle% | %meta_keywords%"
   setting :article_title_template, :string, "%title% | %blog_name%"
   setting :article_desc_template, :string, "%excerpt%"
@@ -114,7 +114,7 @@ class Blog < ApplicationRecord
   setting :paginated_title_template, :string, "%blog_name% | %blog_subtitle% %page%"
   setting :paginated_desc_template, :string,
           "%blog_name% | %blog_subtitle% | %meta_keywords% %page%"
-  setting :tag_title_template, :string, "Tag: %name% | %blog_name% %page%"
+  setting :tag_title_template, :string, "Category: %name% | %blog_name% %page%"
   setting :tag_desc_template, :string, "%name% | %blog_name% | %blog_subtitle% %page%"
   setting :author_title_template, :string, "%author% | %blog_name%"
   setting :author_desc_template, :string, "%author% | %blog_name% | %blog_subtitle%"

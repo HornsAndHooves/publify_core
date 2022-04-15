@@ -21,6 +21,8 @@ class Article < Content
   has_many :triggers, as: :pending_item
   has_many :comments, dependent: :destroy
 
+  belongs_to :resource
+
   before_create :create_guid
   before_save :set_permalink
   after_save :keywords_to_tags, :shorten_url
@@ -200,7 +202,7 @@ class Article < Content
   end
 
   def notify_user_via_email(user)
-    EmailNotify.send_article(self, user) if user.notify_via_email?
+    # EmailNotify.send_article(self, user) if user.notify_via_email?
   end
 
   def comments_closed?

@@ -7,7 +7,7 @@ require "publify_core/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "publify_core"
+  s.name        = "HornsAndHooves-publify_core"
   s.version     = PublifyCore::VERSION
   s.authors     = ["Matijs van Zuijlen", "Yannick François",
                    "Thomas Lecavellier", "Frédéric de Villamil"]
