@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemoveProfiles < ActiveRecord::Migration[4.2]
-  set_role "content"
+  set_role "blog_content"
 
   class Profile < ActiveRecord::Base
     serialize :modules
@@ -12,7 +12,7 @@ class RemoveProfiles < ActiveRecord::Migration[4.2]
   end
 
   def down
-    create_table :profiles, schema: "content" do |t|
+    create_table :profiles, schema: "blog_content" do |t|
       t.string :label
       t.string :nicename
       t.text   :modules

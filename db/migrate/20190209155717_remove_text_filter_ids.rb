@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemoveTextFilterIds < ActiveRecord::Migration[5.2]
-  set_role "content"
+  set_role "blog_content"
 
   def up
     remove_column :contents, :text_filter_id

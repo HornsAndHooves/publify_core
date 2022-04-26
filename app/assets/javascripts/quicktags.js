@@ -58,7 +58,6 @@ function get_buttons(textfilter) {
       edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
       edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));
       edButtons.push(new edButton('ed_li', 'li', '* ', '', 'l', -1));
-      edButtons.push(new edButton('ed_ol', 'ol', '#', '', 'o', -1));
       edButtons.push(new edButton('ed_block', 'b-quote', '>', '', 'q', -1));
       edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
       edButtons.push(new edButton('ed_code', 'code', '`', '`', 'c'));
@@ -70,7 +69,7 @@ function get_buttons(textfilter) {
       edButtons.push(new edButton('ed_h2', 'h2', '<h2>', '</h2>', 'b'));
       edButtons.push(new edButton('ed_h3', 'h3', '<h2>', '</h2>', 'b'));
       edButtons.push(new edButton('ed_h4', 'h4', '<h2>', '</h2>', 'b'));
-		  edButtons.push(new edButton('ed_bold', 'b', '<strong>', '</strong>', 'b'));
+			edButtons.push(new edButton('ed_bold', 'b', '<strong>', '</strong>', 'b'));
       edButtons.push(new edButton('ed_italic', 'i', '<em>', '</em>', 'i'));
       edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
       edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));

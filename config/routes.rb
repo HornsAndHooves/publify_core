@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
   scope "/blog" do
-    devise_for :users, controllers: { sessions: "users_sessions" }
+    devise_for :users,
+               controllers: { sessions: "users_sessions" },
+               skip: [:registrations]
+
     # TODO: use only in archive sidebar. See how made other system
     get ":year/:month", to: "articles#index", year: /\d{4}/, month: /\d{1,2}/,
                         as: "articles_by_month", format: false

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemoveExtraStateColumnsFromFeedback < ActiveRecord::Migration[5.0]
-  set_role "content"
+  set_role "blog_content"
 
   def change
     remove_column :feedback, :published, :boolean, default: false

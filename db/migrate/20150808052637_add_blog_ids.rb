@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddBlogIds < ActiveRecord::Migration[4.2]
-  set_role "content"
+  set_role "blog_content"
 
   class Blog < ActiveRecord::Base; end
   class Content < ActiveRecord::Base; end

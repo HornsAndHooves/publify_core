@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
 class InitialSchema < ActiveRecord::Migration[4.2]
-  set_role "content"
+  set_role "blog_content"
 
   def change
-    create_schema_if_not_exists "content"
+    create_schema_if_not_exists "blog_content"
 
-    create_table "articles_tags", id: false, force: true, schema: "content" do |t|
+    create_table "articles_tags", id: false, force: true, schema: "blog_content" do |t|
       t.integer "article_id"
       t.integer "tag_id"
     end
 
-    create_table "blogs", force: true, schema: "content" do |t|
+    create_table "blogs", force: true, schema: "blog_content" do |t|
       t.text   "settings"
       t.string "base_url"
     end
 
-    create_table "categories", force: true, schema: "content" do |t|
+    create_table "categories", force: true, schema: "blog_content" do |t|
       t.string  "name"
       t.integer "position"
       t.string  "permalink"
@@ -27,13 +27,13 @@ class InitialSchema < ActiveRecord::Migration[4.2]
 
     add_index "categories", ["permalink"]
 
-    create_table "categorizations", force: true, schema: "content" do |t|
+    create_table "categorizations", force: true, schema: "blog_content" do |t|
       t.integer "article_id"
       t.integer "category_id"
       t.boolean "is_primary"
     end
 
-    create_table "contents", force: true, schema: "content" do |t|
+    create_table "contents", force: true, schema: "blog_content" do |t|
       t.string   "type"
       t.string   "title"
       t.string   "author"
@@ -62,7 +62,7 @@ class InitialSchema < ActiveRecord::Migration[4.2]
     add_index "contents", ["published"]
     add_index "contents", ["text_filter_id"]
 
-    create_table "feedback", force: true, schema: "content" do |t|
+    create_table "feedback", force: true, schema: "blog_content" do |t|
       t.string   "type"
       t.string   "title"
       t.string   "author"
@@ -89,13 +89,13 @@ class InitialSchema < ActiveRecord::Migration[4.2]
     add_index "feedback", ["article_id"]
     add_index "feedback", ["text_filter_id"]
 
-    create_table "page_caches", force: true, schema: "content" do |t|
+    create_table "page_caches", force: true, schema: "blog_content" do |t|
       t.string "name"
     end
 
     add_index "page_caches", ["name"]
 
-    create_table "pings", force: true, schema: "content" do |t|
+    create_table "pings", force: true, schema: "blog_content" do |t|
       t.integer  "article_id"
       t.string   "url"
       t.datetime "created_at"
@@ -103,29 +103,29 @@ class InitialSchema < ActiveRecord::Migration[4.2]
 
     add_index "pings", ["article_id"]
 
-    create_table "post_types", force: true, schema: "content" do |t|
+    create_table "post_types", force: true, schema: "blog_content" do |t|
       t.string "name"
       t.string "permalink"
       t.string "description"
     end
 
-    create_table "profiles", force: true, schema: "content" do |t|
+    create_table "profiles", force: true, schema: "blog_content" do |t|
       t.string "label"
       t.string "nicename"
       t.text   "modules"
     end
 
-    create_table "profiles_rights", id: false, force: true, schema: "content" do |t|
+    create_table "profiles_rights", id: false, force: true, schema: "blog_content" do |t|
       t.integer "profile_id"
       t.integer "right_id"
     end
 
-    create_table "redirections", force: true, schema: "content" do |t|
+    create_table "redirections", force: true, schema: "blog_content" do |t|
       t.integer "content_id"
       t.integer "redirect_id"
     end
 
-    create_table "redirects", force: true, schema: "content" do |t|
+    create_table "redirects", force: true, schema: "blog_content" do |t|
       t.string   "from_path"
       t.string   "to_path"
       t.string   "origin"
@@ -133,7 +133,7 @@ class InitialSchema < ActiveRecord::Migration[4.2]
       t.datetime "updated_at"
     end
 
-    create_table "resources", force: true, schema: "content" do |t|
+    create_table "resources", force: true, schema: "blog_content" do |t|
       t.integer  "size"
       t.string   "upload"
       t.string   "mime"
@@ -150,14 +150,14 @@ class InitialSchema < ActiveRecord::Migration[4.2]
       t.boolean  "itunes_explicit"
     end
 
-    create_table "sidebars", force: true, schema: "content" do |t|
+    create_table "sidebars", force: true, schema: "blog_content" do |t|
       t.integer "active_position"
       t.text    "config"
       t.integer "staged_position"
       t.string  "type"
     end
 
-    create_table "sitealizer", force: true, schema: "content" do |t|
+    create_table "sitealizer", force: true, schema: "blog_content" do |t|
       t.string   "path"
       t.string   "ip"
       t.string   "referer"
@@ -167,14 +167,14 @@ class InitialSchema < ActiveRecord::Migration[4.2]
       t.date     "created_on"
     end
 
-    create_table "tags", force: true, schema: "content" do |t|
+    create_table "tags", force: true, schema: "blog_content" do |t|
       t.string   "name"
       t.datetime "created_at"
       t.datetime "updated_at"
       t.string   "display_name"
     end
 
-    create_table "text_filters", force: true, schema: "content" do |t|
+    create_table "text_filters", force: true, schema: "blog_content" do |t|
       t.string "name"
       t.string "description"
       t.string "markup"
@@ -182,14 +182,14 @@ class InitialSchema < ActiveRecord::Migration[4.2]
       t.text   "params"
     end
 
-    create_table "triggers", force: true, schema: "content" do |t|
+    create_table "triggers", force: true, schema: "blog_content" do |t|
       t.integer  "pending_item_id"
       t.string   "pending_item_type"
       t.datetime "due_at"
       t.string   "trigger_method"
     end
 
-    create_table "users", force: true, schema: "content" do |t|
+    create_table "users", force: true, schema: "blog_content" do |t|
       t.string   "login"
       t.string   "password"
       t.text     "email"

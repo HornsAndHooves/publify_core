@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReplaceProfileIdWithString < ActiveRecord::Migration[4.2]
-  set_role "content"
+  set_role "blog_content"
 
   class Profile < ActiveRecord::Base
   end
