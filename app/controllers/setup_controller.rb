@@ -24,10 +24,10 @@ class SetupController < BaseController
 
     sign_in @user
 
-    if User.count == 1
-      create_first_post @user
-      create_first_page @user
-    end
+    # if User.count == 1
+    #   create_first_post @user
+    #   create_first_page @user
+    # end
 
     # EmailNotify.send_user_create_notification(@user)
 

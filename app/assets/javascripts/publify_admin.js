@@ -48,7 +48,7 @@ function autosave_request(e) {
         type: "POST",
         url: '/blog/admin/content/autosave',
         data: $("#article_form").serialize()});
-    }, 5000)
+    }, 1500)
   });
 }
 

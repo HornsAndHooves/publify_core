@@ -80,23 +80,23 @@
                 </p>
               </div>
             </div>
-            <div class="control-group">
-              <p>
-                <%= t('.status') %>: <strong><%= @article.state.to_s.downcase %></strong>
-                <%= toggle_element('status') %>
-              </p>
-              <div id="status" class="collapse">
-                <label for="article_published" class="checkbox">
-                  <%= check_box 'article', 'published?' %>
-                  <%= t('.published') %>
-                </label>
-                <p>
-                  <span class="btn btn-mini btn-default">
-                    <%= toggle_element('status', t('.ok')) %>
-                  </span>
-                </p>
-              </div>
-            </div>
+<!--            <div class="control-group">-->
+<!--              <p>-->
+<!--                <%#= t('.status') %>: <strong><%#= @article.state.to_s.downcase %></strong>-->
+                <%#= toggle_element('status') %>
+<!--              </p>-->
+<!--              <div id="status" class="collapse">-->
+<!--                <label for="article_published" class="checkbox">-->
+                  <%#= check_box 'article', 'published?' %>
+                  <%#= t('.published') %>
+<!--                </label>-->
+<!--                <p>-->
+<!--                  <span class="btn btn-mini btn-default">-->
+                    <%#= toggle_element('status', t('.ok')) %>
+<!--                  </span>-->
+<!--                </p>-->
+<!--              </div>-->
+<!--            </div>-->
             <div class="control-group">
               <p>
                 <%= t('.allowed_comments_html', allow_comment: content_tag(:strong, @article.allow_comments? ? t('.allow_comments_status.enabled') : t('.allow_comments_status.disabled'))) %>
