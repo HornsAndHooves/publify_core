@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      root "dashboard#index", as: "dashboard"
+      get "/", to: "dashboard#index", as: "dashboard"
 
       resources :content, only: [:index, :new, :edit, :create, :update, :destroy],
                           format: false do
@@ -160,7 +160,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :new, :edit, :create, :update, :destroy], format: false
     end
 
-    root "articles#index"
+    get "/", to: "articles#index"
 
     get "*from", to: "articles#redirect", format: false
   end
