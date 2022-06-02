@@ -54,6 +54,7 @@ FactoryBot.define do
   end
 
   factory :article do
+    resource
     title { "A big article" }
     body { "A content with several data" }
     extended { "extended content for fun" }

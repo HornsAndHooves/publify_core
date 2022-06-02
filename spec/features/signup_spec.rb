@@ -12,25 +12,28 @@ RSpec.feature "Signing up", type: :feature do
                       base_url: "http://www.example.com/",
                       allow_signup: 1)
     create :user, :as_admin, login: "admin", password: "a-secret"
+    create :user, :as_publisher, login: "hello", password: "hush-hush", email: "hello@hello.com"
   end
 
   scenario "User signs up for an account" do
-    visit admin_dashboard_path
-    click_link I18n.t("accounts.create_account")
-
-    # Create account
-    fill_in :user_login, with: "hello"
-    fill_in :user_email, with: "hello@hello.com"
-    fill_in :user_password, with: "hush-hush"
-    fill_in :user_password_confirmation, with: "hush-hush"
-    click_button I18n.t!("devise.registrations.new.sign_up")
-
-    # Confirm creation success
-    expect(page).to have_text I18n.t!("devise.registrations.signed_up")
+    # Registration is disabled
+    #
+    # visit admin_dashboard_path
+    # click_link I18n.t("accounts.create_account")
+    #
+    # # Create account
+    # fill_in :user_login, with: "hello"
+    # fill_in :user_email, with: "hello@hello.com"
+    # fill_in :user_password, with: "hush-hush"
+    # fill_in :user_password_confirmation, with: "hush-hush"
+    # click_button I18n.t!("devise.registrations.new.sign_up")
+    #
+    # # Confirm creation success
+    # expect(page).to have_text I18n.t!("devise.registrations.signed_up")
 
     # Sign out
-    visit admin_dashboard_path
-    find("a[href=\"#{destroy_user_session_path}\"]").click
+    # visit admin_dashboard_path
+    # find("a[href=\"#{destroy_user_session_path}\"]").click
 
     # Confirm ability to sign in
     visit admin_dashboard_path
@@ -40,6 +43,6 @@ RSpec.feature "Signing up", type: :feature do
     expect(page).to have_text I18n.t!("devise.sessions.signed_in")
 
     # Confirm proper setting fo user properties
-    expect(User.last.email).to eq "hello@hello.com"
+    # expect(User.last.email).to eq "hello@hello.com"
   end
 end

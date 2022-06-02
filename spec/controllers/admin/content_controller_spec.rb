@@ -8,6 +8,7 @@ describe Admin::ContentController, type: :controller do
   let(:admin) { create(:user, :as_admin) }
   let(:publisher) { create(:user, :as_publisher) }
   let(:contributor) { create(:user, :as_contributor) }
+  let(:resource) { create :resource }
 
   before do
     create :blog
@@ -72,6 +73,10 @@ describe Admin::ContentController, type: :controller do
   end
 
   describe "#autosave" do
+    def article_attributes(*params)
+      attributes_for(*params).merge(resource_id: resource.id)
+    end
+
     before do
       sign_in publisher
     end
@@ -79,14 +84,14 @@ describe Admin::ContentController, type: :controller do
     context "first time save" do
       it "creates a new draft Article" do
         expect do
-          post :autosave, xhr: true, params: { article: attributes_for(:article) }
+          post :autosave, xhr: true, params: { article: article_attributes(:article) }
         end.to change(Article, :count).by(1)
       end
 
       it "creates tags for the draft article if relevant" do
         expect do
           post :autosave,
-               xhr: true, params: { article: attributes_for(:article, :with_tags) }
+               xhr: true, params: { article: article_attributes(:article, :with_tags) }
         end.to change(Tag, :count).by(2)
       end
     end
@@ -108,12 +113,12 @@ describe Admin::ContentController, type: :controller do
 
       it "creates a new draft Article" do
         expect do
-          post :autosave, xhr: true, params: { article: attributes_for(:article) }
+          post :autosave, xhr: true, params: { article: article_attributes(:article) }
         end.to change(Article, :count).by(1)
       end
 
       it "does not replace existing draft" do
-        post :autosave, xhr: true, params: { article: attributes_for(:article) }
+        post :autosave, xhr: true, params: { article: article_attributes(:article) }
         expect(assigns(:article).id).not_to eq(draft.id)
         expect(assigns(:article).body).not_to eq(draft.body)
       end
@@ -138,20 +143,22 @@ describe Admin::ContentController, type: :controller do
         { title: "posted via tests!",
           body: "A good body",
           allow_comments: "1",
-          allow_pings: "1" }.merge(options)
+          allow_pings: "1",
+          resource_id: resource.id }.merge(options)
       end
 
-      it "sends notifications on create" do
-        u = create(:user, notify_via_email: true, notify_on_new_articles: true)
-        u.save!
-        ActionMailer::Base.deliveries.clear
-        emails = ActionMailer::Base.deliveries
-
-        post :create, params: { "article" => base_article }
-
-        assert_equal(1, emails.size)
-        assert_equal(u.email, emails.first.to[0])
-      end
+      # ActionMailer::Base is disabled.
+      # it "sends notifications on create" do
+      #   u = create(:user, notify_via_email: true, notify_on_new_articles: true)
+      #   u.save!
+      #   ActionMailer::Base.deliveries.clear
+      #   emails = ActionMailer::Base.deliveries
+      #
+      #   post :create, params: { "article" => base_article }
+      #
+      #   assert_equal(1, emails.size)
+      #   assert_equal(u.email, emails.first.to[0])
+      # end
 
       it "creates an article with tags" do
         post :create, params: { "article" => base_article(keywords: "foo bar") }
@@ -184,7 +191,7 @@ describe Admin::ContentController, type: :controller do
         body = "body via *markdown*"
         extended = "*foo*"
         post :create,
-             params: { article: { title: "another test", body: body, extended: extended } }
+             params: { article: { title: "another test", body: body, extended: extended, resource_id: resource.id } }
 
         assert_response :redirect, action: "index"
 
@@ -234,7 +241,7 @@ describe Admin::ContentController, type: :controller do
         @user = publisher
       end
 
-      let(:article_params) { { title: "posted via tests!", body: "a good boy" } }
+      let(:article_params) { { title: "posted via tests!", body: "a good boy", resource_id: resource.id } }
 
       it "creates an article" do
         expect do
@@ -263,7 +270,7 @@ describe Admin::ContentController, type: :controller do
       context "writing for the future" do
         let(:article_params) do
           { title: "posted via tests!", body: "a good boy",
-            published_at: 1.hour.from_now.to_s }
+            published_at: 1.hour.from_now.to_s, resource_id: resource.id }
         end
 
         before do
@@ -460,7 +467,7 @@ describe Admin::ContentController, type: :controller do
           @orig = create(:article)
           put(:update, params: {
                 id: @orig.id,
-                article: { title: @orig.title, draft: "draft", body: "update" },
+                article: { title: @orig.title, draft: "draft", body: "update", resource_id: article.resource_id },
               })
         end
 

@@ -73,7 +73,7 @@ Rails.application.routes.draw do
     # Commented as unused
     # get "/notes", to: "notes#index", format: false
     # get "/notes/page/:page", to: "notes#index", format: false
-    # get "/note/:permalink", to: "notes#show", format: false
+    get "/note/:permalink", to: "notes#show", format: false
 
     get "/robots", to: "text#robots", format: "txt"
 

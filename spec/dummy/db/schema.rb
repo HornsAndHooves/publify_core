@@ -12,12 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2019_02_09_160610) do
 
-  create_table "blogs", force: :cascade do |t|
+  create_schema_if_not_exists "blog_content"
+
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "blog_content.blogs", id: :serial, force: :cascade do |t|
     t.text "settings"
     t.string "base_url"
   end
 
-  create_table "contents", force: :cascade do |t|
+  create_table "blog_content.contents", id: :serial, force: :cascade do |t|
     t.string "type"
     t.string "title"
     t.string "author"
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
+    t.integer "resource_id"
     t.string "permalink"
     t.string "guid"
     t.text "whiteboard"
@@ -44,14 +51,14 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
-  create_table "contents_tags", id: false, force: :cascade do |t|
+  create_table "blog_content.contents_tags", id: false, force: :cascade do |t|
     t.integer "content_id"
     t.integer "tag_id"
     t.index ["content_id"], name: "index_contents_tags_on_content_id"
     t.index ["tag_id"], name: "index_contents_tags_on_tag_id"
   end
 
-  create_table "feedback", force: :cascade do |t|
+  create_table "blog_content.feedback", id: :serial, force: :cascade do |t|
     t.string "type"
     t.string "title"
     t.string "author"
@@ -75,25 +82,25 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["user_id"], name: "index_feedback_on_user_id"
   end
 
-  create_table "page_caches", force: :cascade do |t|
+  create_table "blog_content.page_caches", id: :serial, force: :cascade do |t|
     t.string "name"
     t.index ["name"], name: "index_page_caches_on_name"
   end
 
-  create_table "pings", force: :cascade do |t|
+  create_table "blog_content.pings", id: :serial, force: :cascade do |t|
     t.integer "article_id"
     t.string "url"
     t.datetime "created_at"
     t.index ["article_id"], name: "index_pings_on_article_id"
   end
 
-  create_table "post_types", force: :cascade do |t|
+  create_table "blog_content.post_types", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "permalink"
     t.string "description"
   end
 
-  create_table "redirects", force: :cascade do |t|
+  create_table "blog_content.redirects", id: :serial, force: :cascade do |t|
     t.string "from_path"
     t.string "to_path"
     t.datetime "created_at"
@@ -102,7 +109,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.integer "blog_id"
   end
 
-  create_table "resources", force: :cascade do |t|
+  create_table "blog_content.resources", id: :serial, force: :cascade do |t|
     t.integer "size"
     t.string "upload"
     t.string "mime"
@@ -121,7 +128,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["content_id"], name: "index_resources_on_content_id"
   end
 
-  create_table "sidebars", force: :cascade do |t|
+  create_table "blog_content.sidebars", id: :serial, force: :cascade do |t|
     t.integer "active_position"
     t.text "config"
     t.integer "staged_position"
@@ -130,7 +137,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["id", "type"], name: "index_sidebars_on_id_and_type"
   end
 
-  create_table "sitealizer", force: :cascade do |t|
+  create_table "blog_content.sitealizer", id: :serial, force: :cascade do |t|
     t.string "path"
     t.string "ip"
     t.string "referer"
@@ -140,7 +147,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.date "created_on"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "blog_content.tags", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -148,7 +155,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.integer "blog_id"
   end
 
-  create_table "triggers", force: :cascade do |t|
+  create_table "blog_content.triggers", id: :serial, force: :cascade do |t|
     t.integer "pending_item_id"
     t.string "pending_item_type"
     t.datetime "due_at"
@@ -156,7 +163,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["pending_item_id", "pending_item_type"], name: "index_triggers_on_pending_item_id_and_pending_item_type"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "blog_content.users", id: :serial, force: :cascade do |t|
     t.string "login"
     t.string "encrypted_password", default: "", null: false
     t.string "email", default: "", null: false
@@ -186,5 +193,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["resource_id"], name: "index_users_on_resource_id"
   end
+
+
 
 end

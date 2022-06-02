@@ -12,12 +12,12 @@ describe Resource, type: :model do
     end
 
     it "stores files in the correct location" do
-      expected_path = Rails.root.join("public", "files/resource/1", "testfile.txt")
+      expected_path = Rails.root.join("public", "files/resource/#{resource.to_param}", "testfile.txt")
       expect(resource.upload.file.file).to eq expected_path.to_s
     end
 
     it "stores resized images in the correct location" do
-      thumb_path = Rails.root.join("public", "files/resource/1", "thumb_testfile.png")
+      thumb_path = Rails.root.join("public", "files/resource/#{img_resource.to_param}", "thumb_testfile.png")
       expect(img_resource.upload.thumb.file.file).to eq thumb_path.to_s
     end
 
@@ -26,11 +26,11 @@ describe Resource, type: :model do
     end
 
     it "gives the correct url for the attachment" do
-      expect(resource.upload_url).to eq "/files/resource/1/testfile.txt"
+      expect(resource.upload_url).to eq "/files/resource/#{resource.to_param}/testfile.txt"
     end
 
     it "gives the correct url for the image versions" do
-      expect(img_resource.upload_url(:thumb)).to eq "/files/resource/1/thumb_testfile.png"
+      expect(img_resource.upload_url(:thumb)).to eq "/files/resource/#{img_resource.to_param}/thumb_testfile.png"
     end
   end
 end

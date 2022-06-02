@@ -33,7 +33,8 @@ describe Tag, type: :model do
   end
 
   it "articles can be tagged" do
-    a = Article.create(title: "an article", blog: blog)
+    r = create(:resource)
+    a = Article.create(title: "an article", blog: blog, resource: r)
     foo = create(:tag, name: "foo")
     bar = create(:tag, name: "bar")
     a.tags << foo
@@ -62,7 +63,7 @@ describe Tag, type: :model do
     let(:tag) { build(:tag, blog: blog, name: "foo", display_name: "Foo") }
 
     it "returns a full url based on the tag name in the tag section" do
-      expect(tag.permalink_url).to eq("#{blog.base_url}/tag/foo")
+      expect(tag.permalink_url).to eq("#{blog.base_url}/blog/tag/foo")
     end
   end
 

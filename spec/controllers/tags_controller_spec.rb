@@ -49,7 +49,7 @@ RSpec.describe TagsController, type: :controller do
 
       it "renders :show by default" do
         do_get
-        expect(response).to render_template(:show)
+        expect(response).to render_template("articles/index")
       end
 
       it "renders the tag template if present" do
@@ -57,12 +57,12 @@ RSpec.describe TagsController, type: :controller do
         allow(controller).to receive(:template_exists?).and_return(true)
         allow(controller).to receive(:render)
         do_get
-        expect(controller).to have_received(:render).with("foo")
+        expect(controller).to have_received(:render).with("articles/index")
       end
 
       it "assigns the correct page title" do
         do_get
-        expect(assigns[:page_title]).to eq "Tag: foo | test blog"
+        expect(assigns[:page_title]).to eq "Category: foo | test blog"
       end
 
       it "assigns the correct description" do

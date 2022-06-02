@@ -37,7 +37,7 @@ describe Blog, type: :model do
                               only_path: only_path)
               end
 
-              it { is_expected.to eq("#{only_path ? sub_url : @base_url}/tag/1") }
+              it { is_expected.to eq("#{only_path ? sub_url : @base_url}/blog/tag/1") }
             end
 
             describe "with a string argument and only_path = #{only_path}" do

@@ -13,11 +13,11 @@ RSpec.feature "Logging in", type: :feature do
   end
 
   scenario "Admin logs in" do
-    visit "/admin"
+    visit "/blog/admin"
     fill_in :user_login, with: "admin"
     fill_in :user_password, with: "a-secret"
 
-    click_button I18n.t("devise.sessions.new.sign_in")
+    click_button "Sign In"
 
     expect(page).to have_text I18n.t("devise.sessions.signed_in")
   end

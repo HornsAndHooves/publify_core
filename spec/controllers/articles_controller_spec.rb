@@ -118,10 +118,11 @@ RSpec.describe ArticlesController, type: :controller do
         User.destroy_all
       end
 
-      it "redirects to signup" do
-        get "index"
-        expect(response).to redirect_to new_user_registration_path
-      end
+      # Registration is disabled.
+      # it "redirects to signup" do
+      #   get "index"
+      #   expect(response).to redirect_to new_user_registration_path
+      # end
     end
   end
 

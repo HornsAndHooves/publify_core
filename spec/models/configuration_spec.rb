@@ -51,8 +51,8 @@ describe "Given a new blog", type: :model do
     expect(blog.comment_text_filter).to eq("markdown smartypants")
   end
 
-  it "#limit_article_display and #limit_rss_display should be 10" do
-    expect(blog.limit_article_display).to eq(10)
+  it "#limit_article_display and #limit_rss_display should be 9" do
+    expect(blog.limit_article_display).to eq(9)
     expect(blog.limit_rss_display).to eq(10)
   end
 
@@ -61,7 +61,7 @@ describe "Given a new blog", type: :model do
   end
 
   it "Comments should be allowed unmoderated by default" do
-    expect(blog).to be_default_allow_comments
+    expect(blog).not_to be_default_allow_comments
     expect(blog).not_to be_default_moderate_comments
   end
 
@@ -98,8 +98,8 @@ describe "Given a new blog", type: :model do
 
   it "Thumb, medium and avatar image size" do
     expect(blog.image_avatar_size).to eq(48)
-    expect(blog.image_thumb_size).to eq(125)
-    expect(blog.image_medium_size).to eq(600)
+    expect(blog.image_thumb_size).to eq(360)
+    expect(blog.image_medium_size).to eq(805)
   end
 
   it "Default meta keyword and description should be empty" do
@@ -177,7 +177,7 @@ describe "Given a new blog", type: :model do
   end
 
   it "tags title template is Tag: name | blog_name | page" do
-    expect(blog.tag_title_template).to eq("Tag: %name% | %blog_name% %page%")
+    expect(blog.tag_title_template).to eq("Category: %name% | %blog_name% %page%")
   end
 
   it "tags description template is name | description | blog description page" do

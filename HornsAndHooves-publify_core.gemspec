@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
   s.add_dependency "kaminari", "~> 1.0"
   s.add_dependency "mimemagic", "~> 0.3.2"
   s.add_dependency "mini_magick", ["~> 4.9", ">= 4.9.4"]
+  s.add_dependency "pg", "< 1.3.0"
+  s.add_dependency "pg_saurus"
   s.add_dependency "rack", ">= 2.0.8"
   s.add_dependency "rails", "~> 5.2.0"
   s.add_dependency "rails-timeago", "~> 2.0"

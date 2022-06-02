@@ -33,7 +33,7 @@ class Blog < ApplicationRecord
   serialize :settings, Hash
 
   # Description
-  setting :blog_name, :string, "Integra Credit"
+  setting :blog_name, :string, "My Shiny Weblog!"
   setting :blog_subtitle, :string, ""
   setting :geourl_location, :string, ""
   setting :canonical_server_url, :string, "" # Deprecated
@@ -105,7 +105,7 @@ class Blog < ApplicationRecord
   setting :nofollowify, :boolean, true
   setting :dofollowify, :boolean, false
   setting :use_meta_keyword, :boolean, true
-  setting :home_title_template, :string, "%blog_name%"
+  setting :home_title_template, :string, "%blog_name% | %blog_subtitle%"
   setting :home_desc_template, :string, "%blog_name% | %blog_subtitle% | %meta_keywords%"
   setting :article_title_template, :string, "%title% | %blog_name%"
   setting :article_desc_template, :string, "%excerpt%"
