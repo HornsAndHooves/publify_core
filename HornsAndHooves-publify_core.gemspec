@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency "pg", "< 1.3.0"
   s.add_dependency "pg_saurus"
   s.add_dependency "rack", ">= 2.0.8"
-  s.add_dependency "rails", "~> 5.2.0"
+  s.add_dependency "rails", "~> 6"
   s.add_dependency "rails-timeago", "~> 2.0"
   s.add_dependency "rails_autolink", "~> 1.1.0"
   s.add_dependency "recaptcha", ["~> 5.0"]
@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "i18n-tasks", "~> 0.9.1"
   s.add_development_dependency "pry"
   s.add_development_dependency "rails-controller-testing", "~> 1.0.1"
-  s.add_development_dependency "rspec-rails", "~> 3.5"
+  s.add_development_dependency "rspec-rails", "~> 5.1"
   s.add_development_dependency "simplecov", "~> 0.17.1"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "timecop", "~> 0.9.1"
