@@ -36,52 +36,52 @@ function get_buttons(textfilter) {
 			edButtons.push(new edButton('ed_h2', 'h2', 'h2.', '', 'b'));
 			edButtons.push(new edButton('ed_h3', 'h3', 'h3.', '', 'b'));
 			edButtons.push(new edButton('ed_h4', 'h4', 'h4.', '', 'b'));
-      edButtons.push(new edButton('ed_bold', 'b', '**', '**', 'b'));
-      edButtons.push(new edButton('ed_italic', 'i', '_', '_', 'i'));
-      edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
-      edButtons.push(new edButton('ed_img', 'img', '!', '!', 'm' ,-1));
-      edButtons.push(new edButton('ed_li', 'li', '* ', '', 'l', -1));
-      edButtons.push(new edButton('ed_block', 'b-quote', '>', '', 'q', -1));
-      edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
-      edButtons.push(new edButton('ed_code', 'code', '@', '@', 'c'));
-      edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
-      edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
-      break;
+			edButtons.push(new edButton('ed_bold', 'b', '**', '**', 'b'));
+			edButtons.push(new edButton('ed_italic', 'i', '_', '_', 'i'));
+			edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
+			edButtons.push(new edButton('ed_img', 'img', '!', '!', 'm' ,-1));
+			edButtons.push(new edButton('ed_li', 'li', '* ', '', 'l', -1));
+			edButtons.push(new edButton('ed_block', 'b-quote', '>', '', 'q', -1));
+			edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
+			edButtons.push(new edButton('ed_code', 'code', '@', '@', 'c'));
+			edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
+			edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
+			break;
 
   case "markdown":
   case "markdown smartypants":
 			edButtons.push(new edButton('ed_h2', 'h2', '##', '##', 'b'));
 			edButtons.push(new edButton('ed_h3', 'h3', '###', '###', 'b'));
 			edButtons.push(new edButton('ed_h4', 'h4', '####', '####', 'b'));
-      edButtons.push(new edButton('ed_bold', 'b', '**', '**', 'b'));
-      edButtons.push(new edButton('ed_italic', 'i', '_', '_', 'i'));
-      edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
-      edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));
-      edButtons.push(new edButton('ed_li', 'li', '* ', '', 'l', -1));
-      edButtons.push(new edButton('ed_block', 'b-quote', '>', '', 'q', -1));
-      edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
-      edButtons.push(new edButton('ed_code', 'code', '`', '`', 'c'));
-      edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
-      edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
-      break;
+			edButtons.push(new edButton('ed_bold', 'b', '**', '**', 'b'));
+			edButtons.push(new edButton('ed_italic', 'i', '_', '_', 'i'));
+			edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
+			edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));
+			edButtons.push(new edButton('ed_li', 'li', '* ', '', 'l', -1));
+			edButtons.push(new edButton('ed_block', 'b-quote', '>', '', 'q', -1));
+			edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
+			edButtons.push(new edButton('ed_code', 'code', '`', '`', 'c'));
+			edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
+			edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
+			break;
 
   default:
-      edButtons.push(new edButton('ed_h2', 'h2', '<h2>', '</h2>', 'b'));
-      edButtons.push(new edButton('ed_h3', 'h3', '<h2>', '</h2>', 'b'));
-      edButtons.push(new edButton('ed_h4', 'h4', '<h2>', '</h2>', 'b'));
+			edButtons.push(new edButton('ed_h2', 'h2', '<h2>', '</h2>', 'b'));
+			edButtons.push(new edButton('ed_h3', 'h3', '<h2>', '</h2>', 'b'));
+			edButtons.push(new edButton('ed_h4', 'h4', '<h2>', '</h2>', 'b'));
 			edButtons.push(new edButton('ed_bold', 'b', '<strong>', '</strong>', 'b'));
-      edButtons.push(new edButton('ed_italic', 'i', '<em>', '</em>', 'i'));
-      edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
-      edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));
-      edButtons.push(new edButton('ed_ul', 'ul', '<ul>\n', '</ul>\n\n', 'u'));
-      edButtons.push(new edButton('ed_ol', 'ol', '<ol>\n', '</ol>\n\n', 'o'));
-      edButtons.push(new edButton('ed_li', 'li', '\t<li>', '</li>\n', 'l'));
-      edButtons.push(new edButton('ed_block', 'b-quote', '<blockquote>', '</blockquote>', 'q'));
-      edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
-      edButtons.push(new edButton('ed_code', 'code', '<code>', '</code>', 'c'));
-      edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
-      edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
-      break;
+			edButtons.push(new edButton('ed_italic', 'i', '<em>', '</em>', 'i'));
+			edButtons.push(new edButton('ed_link', 'link', '', '</a>', 'a'));
+			edButtons.push(new edButton('ed_img', 'img', '', '', 'm' ,-1));
+			edButtons.push(new edButton('ed_ul', 'ul', '<ul>\n', '</ul>\n\n', 'u'));
+			edButtons.push(new edButton('ed_ol', 'ol', '<ol>\n', '</ol>\n\n', 'o'));
+			edButtons.push(new edButton('ed_li', 'li', '\t<li>', '</li>\n', 'l'));
+			edButtons.push(new edButton('ed_block', 'b-quote', '<blockquote>', '</blockquote>', 'q'));
+			edButtons.push(new edButton('ed_del', 'del', '<del>', '</del>'));
+			edButtons.push(new edButton('ed_code', 'code', '<code>', '</code>', 'c'));
+			edButtons.push(new edButton('ed_more', 'more', '\n<!--more-->\n', '', ''));
+			edButtons.push(new edButton('ed_publifycode', 'publify:code', '', '\n</publify:code>\n\n', 'publify:code'));
+			break;
   }
 
 

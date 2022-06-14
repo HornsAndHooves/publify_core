@@ -20,14 +20,16 @@ Rails.application.routes.draw do
     get "sitemap.xml", to: "xml#sitemap", format: "googlesitemap"
 
     # CommentsController
-    # Commented as unused
-    # resources :comments, only: [:create] do
-    #   collection do
-    #     post :preview
-    #   end
-    # end
-    #
-    # resources :feedback, only: :index
+    # Disabled for all environments except test.
+    if Rails.env.test?
+      resources :comments, only: [:create] do
+        collection do
+          post :preview
+        end
+      end
+
+      resources :feedback, only: :index
+    end
 
     # ArticlesController
     get "/live_search/", to: "articles#live_search", as: :live_search_articles, format: false
@@ -57,31 +59,36 @@ Rails.application.routes.draw do
     resources :authors, path: "author", only: :show
 
     # ThemeController
-    # Commented as unused
-    # scope controller: "theme", filename: /.*/ do
-    #   get "stylesheets/theme/:filename", action: "stylesheets", format: false
-    #   get "javascripts/theme/:filename", action: "javascripts", format: false
-    #   get "images/theme/:filename", action: "images", format: false
-    #   get "fonts/theme/:filename", action: "fonts", format: false
-    # end
+    # Disabled for all environments except test.
+    if Rails.env.test?
+      scope controller: "theme", filename: /.*/ do
+        get "stylesheets/theme/:filename", action: "stylesheets", format: false
+        get "javascripts/theme/:filename", action: "javascripts", format: false
+        get "images/theme/:filename", action: "images", format: false
+        get "fonts/theme/:filename", action: "fonts", format: false
+      end
 
-    # For the tests
-    # Commented as unused
-    # get "theme/static_view_test", format: false
+      # For the tests
+      get "theme/static_view_test", format: false
+    end
 
     # For the statuses
-    # Commented as unused
-    # get "/notes", to: "notes#index", format: false
-    # get "/notes/page/:page", to: "notes#index", format: false
+    # Disabled for all environments except test.
+    if Rails.env.test?
+      get "/notes", to: "notes#index", format: false
+      get "/notes/page/:page", to: "notes#index", format: false
+    end
+
     get "/note/:permalink", to: "notes#show", format: false
 
     get "/robots", to: "text#robots", format: "txt"
 
     # TODO: Remove if possible
-    # Commented as unused
-    resources :accounts, only: [], format: false do
-      collection do
-        get "confirm"
+    if Rails.env.test?
+      resources :accounts, only: [], format: false do
+        collection do
+          get "confirm"
+        end
       end
     end
 

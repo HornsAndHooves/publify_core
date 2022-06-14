@@ -301,7 +301,7 @@ en:
     resources:
       destroy:
         notice: File has been deleted
-        error: File can't be deleted. There is article which uses it.
+        error: File cannot be deleted. There is an article which uses it.
       index:
         are_you_sure: Are you sure?
         content_type: Content Type
