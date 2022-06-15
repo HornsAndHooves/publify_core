@@ -7,7 +7,7 @@ require "publify_core/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "publify_core"
+  s.name        = "HornsAndHooves-publify_core"
   s.version     = PublifyCore::VERSION
   s.authors     = ["Matijs van Zuijlen", "Yannick François",
                    "Thomas Lecavellier", "Frédéric de Villamil"]
@@ -36,8 +36,10 @@ Gem::Specification.new do |s|
   s.add_dependency "kaminari", "~> 1.0"
   s.add_dependency "mimemagic", "~> 0.3.2"
   s.add_dependency "mini_magick", ["~> 4.9", ">= 4.9.4"]
+  s.add_dependency "pg", "< 1.3.0"
+  s.add_dependency "pg_saurus"
   s.add_dependency "rack", ">= 2.0.8"
-  s.add_dependency "rails", "~> 5.2.0"
+  s.add_dependency "rails", "~> 6"
   s.add_dependency "rails-timeago", "~> 2.0"
   s.add_dependency "rails_autolink", "~> 1.1.0"
   s.add_dependency "recaptcha", ["~> 5.0"]
@@ -48,13 +50,14 @@ Gem::Specification.new do |s|
   s.add_dependency "twitter", "~> 7.0.0"
   s.add_dependency "uuidtools", "~> 2.1.1"
 
+  s.add_development_dependency "brakeman"
   s.add_development_dependency "capybara", "~> 3.0"
   s.add_development_dependency "factory_bot", "~> 5.1"
   s.add_development_dependency "feedjira", "~> 3.1"
   s.add_development_dependency "i18n-tasks", "~> 0.9.1"
   s.add_development_dependency "pry"
   s.add_development_dependency "rails-controller-testing", "~> 1.0.1"
-  s.add_development_dependency "rspec-rails", "~> 3.5"
+  s.add_development_dependency "rspec-rails"
   s.add_development_dependency "simplecov", "~> 0.17.1"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "timecop", "~> 0.9.1"

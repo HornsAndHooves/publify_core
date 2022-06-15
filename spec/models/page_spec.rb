@@ -19,7 +19,7 @@ describe Page, type: :model do
     let(:page) { build(:page, name: "page_one", blog: blog) }
 
     it "returns a full url based on the page name in the pages section" do
-      expect(page.permalink_url).to eq("#{blog.base_url}/pages/page_one")
+      expect(page.permalink_url).to eq("#{blog.base_url}/blog/pages/page_one")
     end
   end
 

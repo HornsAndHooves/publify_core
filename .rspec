@@ -1,2 +1,7 @@
 --color
+--format documentation
+--profile
+--backtrace
+--order random
 --require spec_helper
+

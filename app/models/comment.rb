@@ -19,7 +19,7 @@ class Comment < Feedback
   scope :last_published, -> { published.limit(5).order("created_at DESC") }
 
   def notify_user_via_email(user)
-    EmailNotify.send_comment(self, user) if user.notify_via_email?
+    # EmailNotify.send_comment(self, user) if user.notify_via_email?
   end
 
   def interested_users

@@ -21,7 +21,7 @@ describe Admin::ProfilesController, type: :controller do
   describe "#update" do
     it "redirects to profile page" do
       post :update, params: { id: alice.id, user: { email: "foo@bar.com" } }
-      expect(response).to redirect_to("/admin/profiles")
+      expect(response).to redirect_to("/blog/admin/profiles")
     end
 
     it "does not allow updating your own profile" do

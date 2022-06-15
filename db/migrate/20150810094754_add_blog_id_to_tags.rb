@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AddBlogIdToTags < ActiveRecord::Migration[4.2]
+  set_role "blog_content"
+
   class Tag < ActiveRecord::Base; end
 
   def up

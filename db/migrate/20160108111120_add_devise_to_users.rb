@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AddDeviseToUsers < ActiveRecord::Migration[4.2]
+  set_role "blog_content"
+
   def self.up
     ## Database authenticatable
     change_column :users, :email, :string, null: false, default: ""

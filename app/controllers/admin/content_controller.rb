@@ -109,10 +109,11 @@ class Admin::ContentController < Admin::BaseController
 
     @article.attributes = params[:article].permit!
 
+    @article.id = nil if @article.new_record?
     @article.author = current_user
     @article.save_attachments!(params[:attachments])
     @article.state = "draft" unless @article.withdrawn?
-    @article.text_filter ||= current_user.default_text_filter
+    @article.text_filter_name ||= current_user.text_filter.name
 
     if @article.title.blank?
       lastid = Article.order("id desc").first.id
@@ -178,6 +179,7 @@ class Admin::ContentController < Admin::BaseController
              :allow_pings,
              :body,
              :body_and_extended,
+             :resource_id,
              :draft,
              :extended,
              :permalink,

@@ -5,6 +5,7 @@ require "timecop"
 
 describe Article, type: :model do
   let(:blog) { create(:blog) }
+  let(:resource) { create :resource }
 
   it "test_content_fields" do
     a = blog.articles.build
@@ -112,6 +113,7 @@ describe Article, type: :model do
     a.user_id = 1
     a.body = "Foo"
     a.title = "Zzz"
+    a.resource_id = resource.id
     assert a.save
 
     a.tags << Tag.find(create(:tag).id)
@@ -160,7 +162,7 @@ describe Article, type: :model do
     end
 
     it "is called upon saving a published article" do
-      a = blog.articles.build(title: "space separated")
+      a = blog.articles.build(title: "space separated", resource_id: resource.id)
       a.publish
       expect(a.permalink).to be_nil
       a.blog = create(:blog)
@@ -215,19 +217,19 @@ describe Article, type: :model do
 
   describe "Testing redirects" do
     it "a new published article gets a redirect" do
-      a = blog.articles.create!(title: "Some title", body: "some text")
+      a = blog.articles.create!(title: "Some title", body: "some text", resource_id: resource.id)
       a.publish!
       expect(a.redirect).not_to be_nil
       expect(a.redirect.to_path).to eq(a.permalink_url)
     end
 
     it "a new unpublished article should not get a redirect" do
-      a = blog.articles.create!(title: "Some title", body: "some text")
+      a = blog.articles.create!(title: "Some title", body: "some text", resource_id: resource.id)
       expect(a.redirect).to be_nil
     end
 
     it "Changin a published article permalink url should only change the to redirection" do
-      a = blog.articles.create!(title: "Some title", body: "some text")
+      a = blog.articles.create!(title: "Some title", body: "some text", resource_id: resource.id)
       a.publish!
       expect(a.redirect).not_to be_nil
       expect(a.redirect.to_path).to eq(a.permalink_url)
@@ -251,7 +253,8 @@ describe Article, type: :model do
 
   it "test_future_publishing" do
     art = blog.articles.build(title: "title", body: "body",
-                              published_at: 2.seconds.from_now)
+                              published_at: 2.seconds.from_now,
+                              resource_id: resource.id)
     art.publish!
 
     expect(art).to be_publication_pending

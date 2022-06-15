@@ -21,6 +21,8 @@ class Article < Content
   has_many :triggers, as: :pending_item
   has_many :comments, dependent: :destroy
 
+  belongs_to :resource
+
   before_create :create_guid
   before_save :set_permalink
   after_save :keywords_to_tags, :shorten_url

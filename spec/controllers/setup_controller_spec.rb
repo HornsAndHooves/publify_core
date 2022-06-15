@@ -43,8 +43,11 @@ describe SetupController, type: :controller do
           admin = User.find_by(login: "admin")
           expect(admin).not_to be_nil
           expect(admin.email).to eq("foo@bar.net")
-          expect(Article.first.user).to eq(admin)
-          expect(Page.first.user).to eq(admin)
+
+          # Default article and page are disabled
+          #
+          # expect(Article.first.user).to eq(admin)
+          # expect(Page.first.user).to eq(admin)
         end
 
         it "logs in admin user" do
@@ -56,9 +59,11 @@ describe SetupController, type: :controller do
                                           action: "confirm")
         end
 
-        it "sends a confirmation email" do
-          expect(ActionMailer::Base.deliveries.size).to eq 1
-        end
+        # ActionMailer is disabled.
+        #
+        # it "sends a confirmation email" do
+        #   expect(ActionMailer::Base.deliveries.size).to eq 1
+        # end
       end
 
       describe "when passing incorrect parameters" do

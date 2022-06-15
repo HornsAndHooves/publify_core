@@ -30,6 +30,7 @@
   </div>
   <div class="col-md-8">
     <%= text_field 'article', 'title', class: 'form-control', placeholder: t('.title') %>
+    <%= select 'article', 'resource_id', resource_options, { prompt: 'Select Image' }, { class: 'form-control', required: "required" } %>
     <div id="editor">
       <%= text_area('article', 'body_and_extended', class: 'form-control ', style: 'height: 360px', placeholder: t('.type_your_post')) %>
     </div>
@@ -75,23 +76,6 @@
                 <p>
                   <span class="btn btn-mini btn-default">
                     <%= toggle_element('permalink', t('.ok')) %>
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div class="control-group">
-              <p>
-                <%= t('.status') %>: <strong><%= @article.state.to_s.downcase %></strong>
-                <%= toggle_element('status') %>
-              </p>
-              <div id="status" class="collapse">
-                <label for="article_published" class="checkbox">
-                  <%= check_box 'article', 'published?' %>
-                  <%= t('.published') %>
-                </label>
-                <p>
-                  <span class="btn btn-mini btn-default">
-                    <%= toggle_element('status', t('.ok')) %>
                   </span>
                 </p>
               </div>

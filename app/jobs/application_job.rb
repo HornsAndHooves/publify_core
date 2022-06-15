@@ -1,4 +1,5 @@
 # frozen_string_literal: true
 
-class ApplicationJob < ActiveJob::Base
-end
+# Unused code.
+# class ApplicationJob < ActiveJob::Base
+# end

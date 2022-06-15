@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AddMissingIndexes < ActiveRecord::Migration[4.2]
+  set_role "blog_content"
+
   def change
     add_index :feedback, [:id, :type]
     add_index :feedback, :user_id

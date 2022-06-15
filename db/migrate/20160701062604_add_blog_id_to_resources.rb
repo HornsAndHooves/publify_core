@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AddBlogIdToResources < ActiveRecord::Migration[4.2]
+  set_role "blog_content"
+
   class Blog < ActiveRecord::Base; end
   class Content < ActiveRecord::Base; end
   class Resource < ActiveRecord::Base; end

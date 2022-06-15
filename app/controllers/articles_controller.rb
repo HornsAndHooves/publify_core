@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class ArticlesController < ContentController
+  RECENT_ARTICLES_COUNT = 3
+
   before_action :login_required, only: [:preview, :preview_page]
   before_action :auto_discovery_feed, only: [:show, :index]
   before_action :verify_config
+  before_action :populate_recent_articles, only: [:redirect, :preview]
 
   layout :theme_layout, except: [:trackback]
 
@@ -62,6 +65,7 @@ class ArticlesController < ContentController
   def preview
     @article = Article.last_draft(params[:id])
     @page_title = this_blog.article_title_template.to_title(@article, this_blog, params)
+
     render "read"
   end
 
@@ -152,6 +156,10 @@ class ArticlesController < ContentController
     else
       true
     end
+  end
+
+  private def populate_recent_articles
+    @recent_articles = this_blog.contents.published.limit(RECENT_ARTICLES_COUNT)
   end
 
   # See an article We need define @article before
