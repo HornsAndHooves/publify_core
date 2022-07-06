@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.files       = File.open("Manifest.txt").readlines.map(&:chomp)
 
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.7.0"
 
   s.add_dependency "aasm", "~> 5.0"
   s.add_dependency "akismet", "~> 3.0"
@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
   s.add_dependency "RedCloth", "~> 4.3.2"
   s.add_dependency "rubypants", "~> 0.7.0"
   s.add_dependency "sassc-rails", "~> 2.0"
-  s.add_dependency "sprockets", "~> 3.0"
+  s.add_dependency "sprockets", "~> 4.0"
   s.add_dependency "twitter", "~> 7.0.0"
   s.add_dependency "uuidtools", "~> 2.1.1"
 
