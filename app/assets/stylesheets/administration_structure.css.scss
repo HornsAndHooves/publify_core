@@ -136,6 +136,15 @@ select#article_resource_id:invalid {
   color: gray;
 }
 
+#article_image_alt {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
+  padding-left: 4px;
+}
+
 #article_body_and_extended,
 #page_body {
   font-size: 1.3em;

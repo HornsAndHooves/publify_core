@@ -2,21 +2,27 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_160610) do
+ActiveRecord::Schema.define(version: 2022_08_15_155148) do
 
   create_schema_if_not_exists "blog_content"
 
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_content.ar_internal_metadata", primary_key: "key", id: :string, force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "blog_content.blogs", id: :serial, force: :cascade do |t|
     t.text "settings"
@@ -47,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.string "post_type", default: "read"
     t.integer "blog_id", null: false
     t.string "text_filter_name"
+    t.string "image_alt"
     t.index ["id", "type"], name: "index_contents_on_id_and_type"
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
@@ -126,6 +133,9 @@ ActiveRecord::Schema.define(version: 2019_02_09_160610) do
     t.boolean "itunes_explicit"
     t.integer "blog_id", null: false
     t.index ["content_id"], name: "index_resources_on_content_id"
+  end
+
+  create_table "blog_content.schema_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
   create_table "blog_content.sidebars", id: :serial, force: :cascade do |t|
