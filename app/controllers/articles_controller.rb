@@ -6,7 +6,6 @@ class ArticlesController < ContentController
   before_action :login_required, only: [:preview, :preview_page]
   before_action :auto_discovery_feed, only: [:show, :index]
   before_action :verify_config
-  before_action :populate_recent_articles, only: [:redirect, :preview]
 
   layout :theme_layout, except: [:trackback]
 
@@ -66,6 +65,8 @@ class ArticlesController < ContentController
     @article = Article.last_draft(params[:id])
     @page_title = this_blog.article_title_template.to_title(@article, this_blog, params)
 
+    populate_recent_articles
+
     render "read"
   end
 
@@ -85,6 +86,9 @@ class ArticlesController < ContentController
     factory = Article::Factory.new(this_blog, current_user)
 
     @article = factory.match_permalink_format(from, this_blog.permalink_format)
+
+    populate_recent_articles
+
     return show_article if @article
 
     # Redirect old version with /:year/:month/:day/:title to new format,
@@ -160,6 +164,8 @@ class ArticlesController < ContentController
 
   private def populate_recent_articles
     @recent_articles = this_blog.contents.published.limit(RECENT_ARTICLES_COUNT)
+
+    @recent_articles = @recent_articles.where.not(id: @article.id) if @article
   end
 
   # See an article We need define @article before

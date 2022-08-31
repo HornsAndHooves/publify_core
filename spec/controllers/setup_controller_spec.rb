@@ -55,8 +55,8 @@ describe SetupController, type: :controller do
         end
 
         it "redirects to confirm the setup" do
-          expect(response).to redirect_to(controller: "accounts",
-                                          action: "confirm")
+          expect(response).to redirect_to(controller: "admin/dashboard",
+                                          action: "index")
         end
 
         # ActionMailer is disabled.

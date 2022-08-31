@@ -113,7 +113,7 @@ class Admin::ContentController < Admin::BaseController
     @article.author = current_user
     @article.save_attachments!(params[:attachments])
     @article.state = "draft" unless @article.withdrawn?
-    @article.text_filter_name ||= current_user.text_filter.name
+    @article.text_filter_name ||= current_user.text_filter&.name || this_blog.text_filter
 
     if @article.title.blank?
       lastid = Article.order("id desc").first.id
@@ -185,7 +185,8 @@ class Admin::ContentController < Admin::BaseController
              :permalink,
              :published_at,
              :title,
-             :keywords)
+             :keywords,
+             :excerpt)
   end
 
   def default_text_filter

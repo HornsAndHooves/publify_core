@@ -31,7 +31,7 @@ class SetupController < BaseController
 
     # EmailNotify.send_user_create_notification(@user)
 
-    redirect_to confirm_accounts_url
+    redirect_to admin_dashboard_url
   end
 
   private
