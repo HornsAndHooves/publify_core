@@ -19,13 +19,13 @@ class RemoveProfiles < ActiveRecord::Migration[4.2]
     end
 
     Profile.create!(label: "admin", nicename: "Publify administrator",
-                    modules: [:dashboard, :articles, :notes, :pages, :feedback,
-                              :media, :themes, :sidebar, :profile, :users,
-                              :settings, :seo])
+                    modules: %i[dashboard articles notes pages feedback
+                                media themes sidebar profile users
+                                settings seo])
     Profile.create!(label: "publisher", nicename: "Blog publisher",
-                    modules: [:dashboard, :articles, :notes, :pages, :feedback,
-                              :media, :profile])
+                    modules: %i[dashboard articles notes pages feedback
+                                media profile])
     Profile.create!(label: "contributor", nicename: "Contributor",
-                    modules: [:dashboard, :profile])
+                    modules: %i[dashboard profile])
   end
 end
