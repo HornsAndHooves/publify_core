@@ -413,6 +413,7 @@ db/migrate/20190208151235_add_text_filter_name_fields.rb
 db/migrate/20190208152646_move_text_filter_to_name.rb
 db/migrate/20190209155717_remove_text_filter_ids.rb
 db/migrate/20190209160610_remove_text_filters.rb
+db/migrate/20220815155148_add_image_alt_field_to_contents_table.rb
 db/seeds.rb
 lib/email_notify.rb
 lib/format.rb
