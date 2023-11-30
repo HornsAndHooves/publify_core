@@ -179,14 +179,15 @@ class Admin::ContentController < Admin::BaseController
              :allow_pings,
              :body,
              :body_and_extended,
-             :resource_id,
              :draft,
+             :excerpt,
              :extended,
+             :image_alt,
+             :keywords,
              :permalink,
              :published_at,
-             :title,
-             :keywords,
-             :excerpt)
+             :resource_id,
+             :title)
   end
 
   def default_text_filter
