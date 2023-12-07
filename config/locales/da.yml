@@ -665,7 +665,7 @@ da:
       this_comment_has_been_flagged_for_moderator_approval: Denne kommentar er blevet markeret som krævende godkendelse. Den vil ikke blive vist før forfatteren godkender den.
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -679,7 +679,7 @@ da:
     - Nov
     - Dec
     month_names:
-    - 
+    -
     - January
     - February
     - March

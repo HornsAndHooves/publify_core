@@ -679,7 +679,7 @@ lt:
       this_comment_has_been_flagged_for_moderator_approval: Komentaras laukia moderatoriaus patvirtinimo
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -693,7 +693,7 @@ lt:
     - Nov
     - Dec
     month_names:
-    - 
+    -
     - January
     - February
     - March

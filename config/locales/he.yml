@@ -665,7 +665,7 @@ he:
       this_comment_has_been_flagged_for_moderator_approval: תגובה זו הועברה לביקורת. היא לא תופיע בבלוג עד אשר הכותב יאשר אותה
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -679,7 +679,7 @@ he:
     - Nov
     - Dec
     month_names:
-    - 
+    -
     - January
     - February
     - March

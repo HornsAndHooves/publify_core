@@ -665,7 +665,7 @@ nb-NO:
       this_comment_has_been_flagged_for_moderator_approval: Denne kommentaren har blitt flagget for godkjenning av moderator. Den vil ikke bli vist på bloggen før moderatoren godkjenner den.
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -679,7 +679,7 @@ nb-NO:
     - Nov
     - Des
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - Mars

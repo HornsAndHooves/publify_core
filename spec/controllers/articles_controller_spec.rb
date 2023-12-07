@@ -265,7 +265,7 @@ RSpec.describe ArticlesController, type: :controller do
           create(:user)
           create(:redirect)
           expect { get :redirect, params: { from: "something/that/isnt/there" } }.
-            to raise_error ActiveRecord::RecordNotFound
+            to raise_error ActionController::MissingExactTemplate
         end
       end
 
@@ -384,9 +384,9 @@ RSpec.describe ArticlesController, type: :controller do
         end
 
         context "try redirect to an unknown location" do
-          it "raises RecordNotFound" do
+          it "raises MissingExactTemplate" do
             expect { get :redirect, params: { from: "#{article.permalink}/foo/bar" } }.
-              to raise_error ActiveRecord::RecordNotFound
+              to raise_error ActionController::MissingExactTemplate
           end
         end
 
@@ -474,7 +474,7 @@ RSpec.describe ArticlesController, type: :controller do
 
       it "does not find the article if the url does not match the fixed component" do
         expect { get :redirect, params: { from: "bar/#{article.permalink}" } }.
-          to raise_error ActiveRecord::RecordNotFound
+          to raise_error ActionController::MissingExactTemplate
       end
     end
   end
